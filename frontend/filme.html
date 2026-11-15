@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Filme | Cine-Planet</title>
+    <link rel="stylesheet" href="/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Barlow+Condensed:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="navbar">
+      <a class="logo" href="/">CINE-PLANET</a>
+      <nav>
+        <a href="/filmes.html">Filmes</a>
+        <a href="/sobre.html">Sobre</a>
+        <a href="/login.html" class="login-btn">Login</a>
+      </nav>
+    </header>
+
+    <main class="section" style="padding-top: 120px">
+      <p id="filme-status" class="filmes-status" role="status">Carregando filme...</p>
+      <section id="filme-erro" class="film-error" aria-live="polite" hidden>
+        <h1 id="erro-titulo">Não foi possível localizar o filme</h1>
+        <p>Confira o endereço ou escolha outro filme.</p>
+        <a class="primary-btn" href="/filmes.html">Voltar aos filmes</a>
+      </section>
+      <article id="filme-detalhe" class="film-detail" hidden>
+        <img id="filme-imagem" src="" alt="" />
+        <div>
+          <p class="eyebrow">Detalhes do filme</p>
+          <h1 id="filme-titulo"></h1>
+          <p id="filme-generos" class="film-detail-meta"></p>
+          <p id="filme-duracao" class="film-detail-meta"></p>
+          <div class="film-detail-facts">
+            <p><strong>Ano de lançamento</strong><span id="filme-ano"></span></p>
+            <p><strong>Direção</strong><span id="filme-diretor"></span></p>
+            <p><strong>Classificação (EUA)</strong><span id="filme-classificacao"></span></p>
+            <p><strong>Nota IMDb</strong><span id="filme-nota"></span></p>
+          </div>
+          <h2 class="film-detail-subheading">Sinopse</h2>
+          <p id="filme-sinopse" class="film-detail-synopsis"></p>
+          <a class="primary-btn" href="/filmes.html">Voltar aos filmes</a>
+        </div>
+      </article>
+    </main>
+    <footer class="footer">
+      <p>© 2026 Cine-Planet · Poá, São Paulo</p>
+    </footer>
+    <script src="/js/filme.js"></script>
+  </body>
+</html>

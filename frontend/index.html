@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cine-Planet</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="/style.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Barlow+Condensed:wght@400;600;700&display=swap"
       rel="stylesheet"
@@ -14,9 +14,9 @@
     <header class="navbar">
       <div class="logo">CINE-PLANET</div>
       <nav>
-        <a href="sites/filmes.html">Filmes</a>
-        <a href="sites/sobre.html">Sobre</a>
-        <a href="sites/login.html" class="login-btn">Login</a>
+        <a href="/filmes.html">Filmes</a>
+        <a href="/sobre.html">Sobre</a>
+        <a href="/login.html" class="login-btn">Login</a>
       </nav>
     </header>
 
@@ -37,7 +37,7 @@
             ameaçador.
           </p>
           <div class="hero-actions">
-            <a href="sites/filmes.html" class="primary-btn">Ver Filmes</a>
+            <a href="/filmes.html" class="primary-btn">Ver Filmes</a>
             <a href="#em-breve" class="secondary-btn">Ver Próximas Estreias</a>
           </div>
         </div>
@@ -49,40 +49,10 @@
           <h2>Em Cartaz</h2>
         </div>
 
-        <div class="grid">
-          <article class="card">
-            <img
-              src="imagens e icones/Avengers_Endgame.jpg"
-              alt="Vingadores Ultimato"
-            />
-            <h3>Vingadores: Ultimato</h3>
-            <p>Ação · Aventura · Ficção Científica · 3h 1min</p>
-          </article>
-
-          <article class="card">
-            <img
-              src="imagens e icones/Jurassic_Park_.jpg"
-              alt="Jurassic Park"
-            />
-            <h3>Jurassic Park</h3>
-            <p>Aventura · Ficção Científica · 2h 7min</p>
-          </article>
-
-          <article class="card">
-            <img
-              src="imagens e icones/avatar2.jpeg"
-              alt="Avatar O Caminho da Água"
-            />
-            <h3>Avatar: O Caminho da Água</h3>
-            <p>Ficção Científica · Aventura · 3h 12min</p>
-          </article>
-
-          <article class="card">
-            <img src="imagens e icones/Titanic.jpg" alt="Titanic" />
-            <h3>Titanic</h3>
-            <p>Romance · Drama · 3h 14min</p>
-          </article>
-        </div>
+        <p id="filmes-status" class="filmes-status" role="status">
+          Carregando filmes...
+        </p>
+        <div class="grid" id="filmes-grid" data-filmes="destaques"></div>
       </section>
 
       <!--
@@ -123,34 +93,9 @@
       </section>-->
     </main>
 
-    <footer class="footer" id="footer">
-      <div>
-        <div class="logo">CINE-PLANET</div>
-        <p>Cinema de trabalho de DS.<br />Poá-São Paulo Brasil</p>
-      </div>
-      <h4>Redes Sociais</h4>
-
-      <img
-        class="social-midia"
-        src="imagens e icones/icones/instagram.png"
-        alt=""
-      />
-      <a href="#">Instagram</a>
-      <img
-        class="social-midia"
-        src="imagens e icones/icones/tik-tok.png"
-        alt=""
-      /><a href="#">Tik Tok</a>
-      <img
-        class="social-midia"
-        src="imagens e icones/icones/youtube.png"
-        alt=""
-      /><a href="#">YouTube</a>
-      <img
-        class="social-midia"
-        src="imagens e icones/icones/twitter.png"
-        alt=""
-      /><a href="#">Twitter/X</a>
+    <footer class="footer">
+      <p>© 2026 Cine-Planet · Poá, São Paulo</p>
     </footer>
+    <script src="/js/filmes.js"></script>
   </body>
 </html>
