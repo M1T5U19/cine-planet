@@ -10,6 +10,7 @@ namespace Controllers
     public class AdminController : ControllerBase
     {
         [HttpGet("sessao")]
+        // Diz qual administrador está conectado.
         public IActionResult Sessao()
         {
             var usuario = HttpContext.User;
@@ -17,6 +18,7 @@ namespace Controllers
         }
 
         [HttpPost("login")]
+        // Confere o login e inicia a sessão do administrador.
         public async Task<IActionResult> Login([FromForm] string nome, [FromForm] string senha)
         {
             var nomeValido = new[] { "Mateus", "Pietro" }.FirstOrDefault(administrador =>
@@ -33,6 +35,7 @@ namespace Controllers
         }
 
         [HttpPost("logout")]
+        // Encerra a sessão e volta para a tela de login.
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);

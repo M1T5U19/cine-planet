@@ -14,12 +14,14 @@ namespace Controllers
         private readonly string _connectionString;
         private const string columns = "id, titulo, generos, duracao, sinopse, imagem, ano, diretor, classificacao, nota_imdb";
 
+        // Deixa a conexão com o banco pronta para os endpoints.
         public FilmesController(IConfiguration configuration)
         {
             _connectionString = configuration.GetConnectionString("CinePlanet") ?? throw new InvalidOperationException("Configure ConnectionStrings:CinePlanet.");
         }
 
         [HttpGet]
+        // Lista os filmes sem repetir títulos.
         public async Task<ActionResult<List<Filme>>> GetFilmes(CancellationToken cancellationToken)
         {
             var query = $@"SELECT {columns} FROM filmes AS f WHERE f.id = (SELECT MIN(id) FROM filmes WHERE titulo = f.titulo) ORDER BY f.titulo";
@@ -27,6 +29,7 @@ namespace Controllers
         }
 
         [HttpGet("{id:int}")]
+        // Busca um filme pelo id.
         public async Task<ActionResult<Filme>> GetFilme(int id, CancellationToken cancellationToken)
         {
             await using var connection = new MySqlConnection(_connectionString);
@@ -40,6 +43,7 @@ namespace Controllers
         }
 
         [HttpPost]
+        // Confere os dados e cadastra um filme novo.
         public async Task<IActionResult> CriarFilme([FromBody] FilmeEntrada filme, CancellationToken cancellationToken)
         {
             var erro = ValidarFilme(filme);
@@ -62,6 +66,7 @@ namespace Controllers
         }
 
         [HttpPut("{id:int}")]
+        // Atualiza os dados de um filme que já existe.
         public async Task<IActionResult> AtualizarFilme(int id, [FromBody] FilmeEntrada filme, CancellationToken cancellationToken)
         {
             var erro = ValidarFilme(filme);
@@ -85,6 +90,7 @@ namespace Controllers
         }
 
         [HttpDelete("{id:int}")]
+        // Remove o filme indicado pelo id.
         public async Task<IActionResult> ExcluirFilme(int id, CancellationToken cancellationToken)
         {
             await using var connection = new MySqlConnection(_connectionString);
@@ -96,6 +102,7 @@ namespace Controllers
             return NoContent();
         }
 
+        // Prepara os valores do filme para a consulta SQL.
         private static void AdicionarParametros(MySqlCommand command, FilmeEntrada filme)
         {
             command.Parameters.AddWithValue("@titulo", filme.Titulo.Trim());
@@ -109,6 +116,7 @@ namespace Controllers
             command.Parameters.AddWithValue("@nota", (object?)filme.NotaImdb ?? DBNull.Value);
         }
 
+        // Confere se os dados do formulário estão válidos.
         private static string? ValidarFilme(FilmeEntrada filme)
         {
             if (filme.NotaImdb is < 0 or > 9.9m)
@@ -119,6 +127,7 @@ namespace Controllers
                 : erros[0].ErrorMessage;
         }
 
+        // Transforma a linha do banco em um objeto Filme.
         private static Filme LerFilme(MySqlDataReader reader) =>
             new(
                 reader.GetInt32(0),
