@@ -20,7 +20,7 @@
       </nav>
     </header>
 
-    <main class="section" style="padding-top: 120px">
+    <main class="section page-section">
       <p id="filme-status" class="filmes-status" role="status">Carregando filme...</p>
       <section id="filme-erro" class="film-error" aria-live="polite" hidden>
         <h1 id="erro-titulo">Não foi possível localizar o filme</h1>
@@ -35,10 +35,22 @@
           <p id="filme-generos" class="film-detail-meta"></p>
           <p id="filme-duracao" class="film-detail-meta"></p>
           <div class="film-detail-facts">
-            <p><strong>Ano de lançamento</strong><span id="filme-ano"></span></p>
-            <p><strong>Direção</strong><span id="filme-diretor"></span></p>
-            <p><strong>Classificação (EUA)</strong><span id="filme-classificacao"></span></p>
-            <p><strong>Nota IMDb</strong><span id="filme-nota"></span></p>
+            <p>
+              <strong>Ano de lançamento</strong>
+              <span id="filme-ano"></span>
+            </p>
+            <p>
+              <strong>Direção</strong>
+              <span id="filme-diretor"></span>
+            </p>
+            <p>
+              <strong>Classificação (EUA)</strong>
+              <span id="filme-classificacao"></span>
+            </p>
+            <p>
+              <strong>Nota IMDb</strong>
+              <span id="filme-nota"></span>
+            </p>
           </div>
           <h2 class="film-detail-subheading">Sinopse</h2>
           <p id="filme-sinopse" class="film-detail-synopsis"></p>
@@ -49,6 +61,6 @@
     <footer class="footer">
       <p>© 2026 Cine-Planet · Poá, São Paulo</p>
     </footer>
-    <script src="/js/filme.js"></script>
+    <script src="/js/detalhe-filme.js"></script>
   </body>
 </html>

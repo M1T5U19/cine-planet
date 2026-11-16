@@ -1,4 +1,4 @@
-const id = new URLSearchParams(window.location.search).get("id");
+const filmeId = new URLSearchParams(window.location.search).get("id");
 const statusMessage = document.querySelector("#filme-status");
 const content = document.querySelector("#filme-detalhe");
 const errorMessage = document.querySelector("#filme-erro");
@@ -9,13 +9,18 @@ function mostrarErro(titulo) {
   errorMessage.hidden = false;
 }
 
-if (!id || !/^[1-9]\d*$/.test(id)) {
+if (!filmeId || !/^[1-9]\d*$/.test(filmeId)) {
   mostrarErro("ID inválido");
 } else {
-  fetch(`/api/filmes/${encodeURIComponent(id)}`)
+  fetch(`/api/filmes/${encodeURIComponent(filmeId)}`)
     .then(async (response) => {
-      if (response.status === 404) throw new Error("Filme não encontrado");
-      if (!response.ok) throw new Error("Não foi possível carregar o filme");
+      if (response.status === 404) {
+        throw new Error("Filme não encontrado");
+      }
+
+      if (!response.ok) {
+        throw new Error("Não foi possível carregar o filme");
+      }
       return response.json();
     })
     .then((filme) => {
@@ -27,7 +32,8 @@ if (!id || !/^[1-9]\d*$/.test(id)) {
       document.querySelector("#filme-duracao").textContent = filme.duracao;
       document.querySelector("#filme-ano").textContent = filme.ano ?? "Não informado";
       document.querySelector("#filme-diretor").textContent = filme.diretor ?? "Não informado";
-      document.querySelector("#filme-classificacao").textContent = filme.classificacao ?? "Não informada";
+      document.querySelector("#filme-classificacao").textContent =
+        filme.classificacao ?? "Não informada";
       document.querySelector("#filme-nota").textContent =
         filme.notaImdb == null ? "Não informada" : `${filme.notaImdb.toFixed(1)}/10`;
       document.querySelector("#filme-sinopse").textContent = filme.sinopse;

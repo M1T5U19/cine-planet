@@ -8,8 +8,8 @@
     <PackageReference Include="MySqlConnector" Version="2.6.1" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="frontend\**\*">
-      <Link>frontend\%(RecursiveDir)%(Filename)%(Extension)</Link>
+    <Content Include="cineplanetSite\**\*">
+      <Link>cineplanetSite\%(RecursiveDir)%(Filename)%(Extension)</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
