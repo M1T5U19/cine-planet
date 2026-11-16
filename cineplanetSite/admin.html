@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gerenciar filmes | Cine-Planet</title>
+    <link rel="stylesheet" href="/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Barlow+Condensed:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="dashboard">
+    <div class="dashboard-layout">
+      <aside class="dashboard-sidebar">
+        <a class="logo" href="/">CINE-PLANET</a>
+        <p class="dashboard-welcome">Olá, <span id="admin-nome">administrador</span></p>
+        <nav class="dashboard-nav" aria-label="Navegação administrativa">
+          <a href="#lista-filmes">Filmes</a>
+          <a href="#formulario-filme">Adicionar filme</a>
+        </nav>
+
+        <form id="formulario-filme" class="dashboard-form">
+          <h1 id="titulo-formulario">Novo filme</h1>
+          <input type="hidden" name="id" />
+
+          <label for="titulo">Título</label>
+          <input id="titulo" name="titulo" maxlength="200" required />
+
+          <label for="generos">Gêneros</label>
+          <input id="generos" name="generos" maxlength="200" required />
+
+          <label for="duracao">Duração</label>
+          <input id="duracao" name="duracao" maxlength="40" placeholder="1h 30min" required />
+
+          <label for="sinopse">Sinopse</label>
+          <textarea id="sinopse" name="sinopse" rows="4" required></textarea>
+
+          <label for="imagem">Caminho da imagem</label>
+          <input
+            id="imagem"
+            name="imagem"
+            maxlength="255"
+            placeholder="/assets/images/filme.jpg"
+            required
+          />
+
+          <label for="ano">Ano</label>
+          <input id="ano" name="ano" type="number" min="1888" max="2100" />
+
+          <label for="diretor">Diretor</label>
+          <input id="diretor" name="diretor" maxlength="200" />
+
+          <label for="classificacao">Classificação</label>
+          <input id="classificacao" name="classificacao" maxlength="20" placeholder="PG-13" />
+
+          <label for="nota-imdb">Nota IMDb (0 a 9,9)</label>
+          <input
+            id="nota-imdb"
+            name="notaImdb"
+            type="number"
+            min="0"
+            max="9.9"
+            step="0.1"
+          />
+
+          <p id="formulario-status" class="dashboard-status" role="status" hidden></p>
+          <button id="salvar-filme" class="primary-btn" type="submit">Adicionar filme</button>
+          <button id="cancelar-edicao" class="secondary-btn" type="button" hidden>
+            Cancelar edição
+          </button>
+        </form>
+
+        <form method="post" action="/logout" class="dashboard-logout">
+          <button type="submit">Sair</button>
+        </form>
+      </aside>
+
+      <main class="dashboard-main" id="lista-filmes">
+        <header class="dashboard-header">
+          <div>
+            <p class="eyebrow">Painel administrativo</p>
+            <h1>Gerenciar filmes</h1>
+          </div>
+          <p id="lista-status" class="dashboard-status" role="status">Carregando filmes...</p>
+        </header>
+        <section id="filmes-admin" class="dashboard-filmes" aria-label="Filmes cadastrados"></section>
+      </main>
+    </div>
+    <script src="/js/admin.js" defer></script>
+  </body>
+</html>
