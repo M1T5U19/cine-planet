@@ -41,7 +41,7 @@ async function carregarFilmes() {
     grid.replaceChildren(...lista.map(criarCard));
     statusMessage.hidden = true;
   } catch {
-    statusMessage.textContent = "Não foi possível carregar os filmes. Verifique a conexão com a API e o banco de dados.";
+    statusMessage.textContent = "Não foi possível carregar os filmes";
   }
 }
 
