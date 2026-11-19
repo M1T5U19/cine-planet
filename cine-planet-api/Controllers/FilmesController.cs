@@ -1,8 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using MySqlConnector;
-using System.Security.Claims;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Models;
 
 namespace Controllers
@@ -100,6 +97,21 @@ namespace Controllers
             if (await command.ExecuteNonQueryAsync(cancellationToken) == 0)
                 return NotFound(new { message = "Não foi possível localizar o filme." });
             return NoContent();
+        }
+
+        // Executa uma consulta de filmes e transforma as linhas no modelo público.
+        private async Task<List<Filme>> BuscarFilmes(string query, CancellationToken cancellationToken)
+        {
+            await using var connection = new MySqlConnection(_connectionString);
+            await connection.OpenAsync(cancellationToken);
+            await using var command = new MySqlCommand(query, connection);
+            await using var reader = await command.ExecuteReaderAsync(cancellationToken);
+
+            var filmes = new List<Filme>();
+            while (await reader.ReadAsync(cancellationToken))
+                filmes.Add(LerFilme(reader));
+
+            return filmes;
         }
 
         // Prepara os valores do filme para a consulta SQL.
