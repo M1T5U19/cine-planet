@@ -2,10 +2,23 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.FileProviders;
 
-var webRoot = Path.GetFullPath(
-    Path.Combine(Directory.GetCurrentDirectory(), "..", "cine-planet-site", "cineplanetSite"));
-var dashboardRoot = Path.GetFullPath(
-    Path.Combine(Directory.GetCurrentDirectory(), "..", "dashboard"));
+static string EncontrarDiretorio(string nome)
+{
+    var diretorio = new DirectoryInfo(Directory.GetCurrentDirectory());
+
+    while (diretorio is not null)
+    {
+        var candidato = Path.Combine(diretorio.FullName, nome);
+        if (Directory.Exists(candidato))
+            return candidato;
+        diretorio = diretorio.Parent;
+    }
+
+    throw new DirectoryNotFoundException($"Não foi possível localizar o diretório '{nome}'.");
+}
+
+var webRoot = EncontrarDiretorio("cine-planet-site");
+var dashboardRoot = EncontrarDiretorio("dashboard");
 
 var builder = WebApplication.CreateBuilder(new WebApplicationOptions
 {

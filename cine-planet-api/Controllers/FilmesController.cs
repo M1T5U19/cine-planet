@@ -18,10 +18,10 @@ namespace Controllers
         }
 
         [HttpGet]
-        // Lista os filmes sem repetir títulos.
+        // Lista os filmes; o banco já garante que os títulos são únicos.
         public async Task<ActionResult<List<Filme>>> GetFilmes(CancellationToken cancellationToken)
         {
-            var query = $@"SELECT {columns} FROM filmes AS f WHERE f.id = (SELECT MIN(id) FROM filmes WHERE titulo = f.titulo) ORDER BY f.titulo";
+            var query = $"SELECT {columns} FROM filmes ORDER BY titulo";
             return await BuscarFilmes(query, cancellationToken);
         }
 

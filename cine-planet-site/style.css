@@ -42,7 +42,7 @@ img {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 18px 40px;
+  padding: 22px 40px;
   background: rgba(10, 10, 10, 0.96);
   border-bottom: 1px solid rgba(201, 168, 76, 0.12);
 }
@@ -69,65 +69,12 @@ img {
   text-transform: uppercase;
 }
 
-.destaque-filme {
-  position: relative;
-  display: flex;
-  align-items: flex-end;
-  min-height: 100vh;
-  padding: 120px 40px 60px;
-  overflow: hidden;
-}
-
-.destaque-filme-imagem {
-  position: absolute;
-  inset: 0;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(0.5);
-}
-
-.destaque-filme-sobreposicao {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(10, 10, 10, 0.98), rgba(10, 10, 10, 0.35));
-}
-
-.destaque-filme-conteudo {
-  position: relative;
-  z-index: 1;
-  max-width: 620px;
-}
-
 .eyebrow {
   margin-bottom: 14px;
   color: #c9a84c;
   font-size: 0.75rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-}
-
-.destaque-filme h1 {
-  margin-bottom: 18px;
-  font-family: "Playfair Display", serif;
-  font-size: clamp(3rem, 7vw, 6rem);
-  font-weight: 900;
-  line-height: 1;
-}
-
-.destaque-filme h1 span {
-  color: #c9a84c;
-}
-
-.destaque-filme p {
-  max-width: 520px;
-  margin-bottom: 28px;
-  color: #ccc;
-}
-
-.destaque-filme-acoes {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
 }
 
 .primary-btn {
@@ -153,8 +100,17 @@ img {
   padding: 80px 40px;
 }
 
+.sobre-section {
+  scroll-margin-top: 80px;
+}
+
+.sobre-section p {
+  color: #ccc;
+}
+
 .page-section {
-  padding-top: 120px;
+  padding-top: 100px;
+  scroll-margin-top: 80px;
 }
 
 .section-header {
@@ -500,7 +456,7 @@ img {
     align-items: flex-end;
     flex-direction: column;
     gap: 12px;
-    padding: 16px 20px;
+    padding: 18px 20px;
   }
 
   .navbar nav {
@@ -508,7 +464,12 @@ img {
   }
 
   .destaque-filme {
-    padding: 140px 20px 50px;
+    width: calc(100% - 32px);
+    height: 55vh;
+    min-height: 300px;
+    max-height: 460px;
+    margin-top: 108px;
+    scroll-margin-top: 108px;
   }
 
   .section {
@@ -544,7 +505,8 @@ img {
 
 .dashboard-layout {
   display: grid;
-  min-height: 100vh;
+  flex: 1;
+  min-height: 0;
   grid-template-columns: minmax(280px, 340px) minmax(0, 1fr);
 }
 

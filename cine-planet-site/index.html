@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cine-Planet</title>
+    <link rel="stylesheet" href="/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Barlow+Condensed:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="navbar">
+      <a class="logo" href="#inicio">CINE-PLANET</a>
+      <nav>
+        <a href="#inicio">Início</a>
+        <a href="#filmes">Filmes</a>
+        <a href="#sobre">Sobre</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section page-section" id="inicio">
+        <div id="filmes">
+          <div class="section-header">
+            <span>Agora nos telões</span>
+            <h1>Em Cartaz</h1>
+          </div>
+          <p id="filmes-status" class="filmes-status" role="status">Carregando filmes...</p>
+          <div class="grid" id="filmes-grid"></div>
+        </div>
+      </section>
+
+      <section class="section sobre-section" id="sobre">
+        <div class="section-header">
+          <h2>Sobre</h2>
+        </div>
+        <p>O Cine-Planet reúne informações sobre filmes para você escolher o que assistir.</p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>© 2026 Cine-Planet · Poá, São Paulo</p>
+    </footer>
+    <script src="/js/lista-filmes.js"></script>
+  </body>
+</html>
